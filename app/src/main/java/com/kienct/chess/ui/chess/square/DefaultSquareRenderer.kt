@@ -1,5 +1,6 @@
 package com.kienct.chess.ui.chess.square
 
+import com.kienct.chess.ui.chess.square.decoration.DefaultCheckedSquare
 import com.kienct.chess.ui.chess.square.decoration.DefaultHighlightSquare
 import com.kienct.chess.ui.chess.square.decoration.DefaultSquareBackground
 import com.kienct.chess.ui.chess.square.decoration.DefaultSquarePositionLabel
@@ -25,6 +26,7 @@ object DefaultSquareRenderer : SquareRenderer {
     override val decorations: List<SquareDecoration> =
         listOf(
             DefaultSquareBackground,
+            DefaultCheckedSquare,
             DefaultHighlightSquare,
             DefaultSquarePositionLabel,
             TargetMarks

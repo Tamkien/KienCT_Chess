@@ -24,6 +24,7 @@ import com.kienct.chess.ui.chess.board.BoardRenderProperties
  */
 data class SquareRenderProperties(
     val position: Position,
+    val checkedKingPosition: Position?,
     val isHighlighted: Boolean,
     val clickable: Boolean,
     val onClick: () -> Unit,

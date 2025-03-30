@@ -5,6 +5,7 @@ import com.kienct.chess.model.board.Position
 import com.kienct.chess.model.move.BoardMove
 import com.kienct.chess.model.move.Capture
 import com.kienct.chess.model.move.targetPositions
+import com.kienct.chess.model.piece.King
 import kotlinx.parcelize.IgnoredOnParcel
 import kotlinx.parcelize.Parcelize
 
@@ -14,6 +15,9 @@ data class UiState(
     val selectedPosition: Position? = null,
     val showPromotionDialog: Boolean = false
 ) : Parcelable {
+    @IgnoredOnParcel
+    private val toMove = gameSnapshotState.toMove
+
     @IgnoredOnParcel
     private val lastMovePositions: List<Position> =
         gameSnapshotState.lastMove?.let { listOf(it.from, it.to) } ?: emptyList()
@@ -29,7 +33,7 @@ data class UiState(
     @IgnoredOnParcel
     private val ownPiecePositions: List<Position> =
         gameSnapshotState.board.pieces
-            .filter { (_, piece) -> piece.color == gameSnapshotState.toMove }
+            .filter { (_, piece) -> piece.color == toMove }
             .map { it.key }
 
     @IgnoredOnParcel
@@ -51,4 +55,15 @@ data class UiState(
             gameSnapshotState.legalMovesFrom(it)
                 .filter(predicate)
         } ?: emptyList()
+
+    @IgnoredOnParcel
+    val checkedKingPosition: Position? =
+        if (gameSnapshotState.hasCheck()) {
+            gameSnapshotState.board.pieces
+                .filter { (_, piece) -> piece is King && piece.color == toMove }
+                .keys.firstOrNull()
+        } else {
+            null
+        }
+
 }

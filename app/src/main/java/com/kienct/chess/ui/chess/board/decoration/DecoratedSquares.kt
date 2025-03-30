@@ -61,6 +61,7 @@ class DecoratedSquares(private val decorations: List<SquareDecoration>) : BoardD
                 val squareProperties = remember(properties) {
                     SquareRenderProperties(
                         position = position,
+                        checkedKingPosition = properties.uiState.checkedKingPosition,
                         isHighlighted = position in properties.uiState.highlightedPositions,
                         clickable = position in properties.uiState.clickablePositions,
                         isPossibleMoveWithoutCapture = position in properties.uiState.possibleMovesWithoutCaptures,

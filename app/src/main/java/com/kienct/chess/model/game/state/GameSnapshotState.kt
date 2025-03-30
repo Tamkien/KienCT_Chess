@@ -14,6 +14,22 @@ import com.kienct.chess.model.piece.King
 import com.kienct.chess.model.piece.Piece
 import kotlinx.parcelize.Parcelize
 
+/**
+ * Represents a snapshot of the game state at a particular moment.
+ *
+ * This data class encapsulates all the necessary information to fully describe
+ * the state of a chess game, including the board configuration, whose turn it is,
+ * the game's resolution (e.g., in progress, checkmate), the last move made, castling
+ * rights, and captured pieces.
+ *
+ * @property board The current configuration of the chessboard.  Defaults to a standard starting position.
+ * @property toMove The color (WHITE or BLACK) of the player whose turn it is. Defaults to WHITE.
+ * @property resolution The current resolution of the game (e.g., IN_PROGRESS, CHECKMATE, STALEMATE).  Defaults to IN_PROGRESS.
+ * @property move The move currently being considered or executed, if any.  Defaults to null.
+ * @property lastMove The last move that was made in the game, if any. Defaults to null.
+ * @property castlingInfo Information about castling rights for both players.  Defaults to initial castling rights.
+ * @property capturedPieces A list of pieces that have been captured during the game. Defaults to an empty list.
+ */
 @Parcelize
 data class GameSnapshotState(
     val board: Board = Board(),
@@ -47,18 +63,18 @@ data class GameSnapshotState(
     }
 
     /**
-     * Checks if the given position is under attack by any of the opponent's pieces
-     * that can capture on their current turn. This essentially checks if the
-     * given position is "in check".
+     * Checks if any piece on the board has a pseudo-legal capture move that targets the given position.
      *
-     * A position is considered "in check" if at least one of the opponent's pieces
-     * can capture a piece on that position in the current state of the board.
+     * This function iterates through all pieces on the board and checks their pseudo-legal capture
+     * moves (moves that are legal according to the piece's movement rules, but may leave the king
+     * in check). If any of these moves target the specified position, it means a piece *could*
+     * capture a piece at that position (ignoring the possibility of check).
      *
-     * @param position The position to check for attacks (check).
-     * @return `true` if the position is under attack (in check), `false` otherwise.
+     * @param position The [Position] to check if any piece has a capture move for.
+     * @return `true` if any piece has a pseudo-legal capture move targeting the given position, `false` otherwise.
      */
     fun hasCheckFor(position: Position): Boolean =
-        board.pieces.filter { (_, piece) -> piece.color == toMove }.any { (_, piece) ->
+        board.pieces.any { (_, piece) ->
             val otherPieceCaptures: List<BoardMove> = piece.pseudoLegalMoves(this, true)
                 .filter { it.preMove is Capture }
             position in otherPieceCaptures.targetPositions()
