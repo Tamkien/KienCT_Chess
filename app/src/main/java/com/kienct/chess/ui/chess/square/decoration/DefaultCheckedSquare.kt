@@ -10,5 +10,5 @@ import androidx.compose.ui.graphics.Color
  */
 object DefaultCheckedSquare : CheckedSquare(
     color = Color.Red,
-    alpha = 0.15f
+    alpha = 0.25f
 )
