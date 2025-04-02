@@ -1,7 +1,7 @@
-package com.kienct.chess.model.game.controller
+package com.kienct.chess.controller.core
 
-import com.kienct.chess.model.game.Resolution
-import com.kienct.chess.model.game.state.GameMetaInfo
+import com.kienct.chess.controller.Resolution
+import com.kienct.chess.controller.state.GameMetaInfo
 import com.kienct.chess.model.piece.Color
 
 /**
@@ -19,6 +19,7 @@ fun GameMetaInfo.withResolution(resolution: Resolution, lastMoveBy: Color): Game
                     .plus(GameMetaInfo.KEY_TERMINATION to "$winner won by checkmate")
             )
         }
+
         Resolution.STALEMATE -> {
             copy(
                 tags = tags
@@ -26,6 +27,7 @@ fun GameMetaInfo.withResolution(resolution: Resolution, lastMoveBy: Color): Game
                     .plus(GameMetaInfo.KEY_TERMINATION to "Stalemate")
             )
         }
+
         Resolution.DRAW_BY_REPETITION -> {
             copy(
                 tags = tags
@@ -33,6 +35,7 @@ fun GameMetaInfo.withResolution(resolution: Resolution, lastMoveBy: Color): Game
                     .plus(GameMetaInfo.KEY_TERMINATION to "Draw by repetition")
             )
         }
+
         Resolution.INSUFFICIENT_MATERIAL -> {
             copy(
                 tags = tags

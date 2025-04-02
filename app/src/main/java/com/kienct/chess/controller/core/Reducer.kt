@@ -1,12 +1,12 @@
-package com.kienct.chess.model.game.controller
+package com.kienct.chess.controller.core
 
 import com.kienct.chess.model.board.Position
-import com.kienct.chess.model.game.state.GameMetaInfo
-import com.kienct.chess.model.game.state.GamePlayState
-import com.kienct.chess.model.game.state.GameSnapshotState
-import com.kienct.chess.model.game.state.GameState
-import com.kienct.chess.model.game.state.PromotionState
-import com.kienct.chess.model.game.state.UiState
+import com.kienct.chess.controller.state.GameMetaInfo
+import com.kienct.chess.controller.state.GamePlayState
+import com.kienct.chess.controller.state.GameSnapshotState
+import com.kienct.chess.controller.state.GameState
+import com.kienct.chess.controller.state.PromotionState
+import com.kienct.chess.controller.state.UiState
 import com.kienct.chess.model.move.BoardMove
 import com.kienct.chess.model.piece.Piece
 

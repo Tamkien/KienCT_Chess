@@ -1,4 +1,4 @@
-package com.kienct.chess.model.game.state
+package com.kienct.chess.controller.state
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize

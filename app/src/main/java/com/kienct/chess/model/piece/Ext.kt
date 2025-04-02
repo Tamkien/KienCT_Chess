@@ -2,11 +2,10 @@ package com.kienct.chess.model.piece
 
 import com.kienct.chess.model.board.Board
 import com.kienct.chess.model.board.Square
-import com.kienct.chess.model.game.state.GameSnapshotState
+import com.kienct.chess.controller.state.GameSnapshotState
 import com.kienct.chess.model.move.BoardMove
 import com.kienct.chess.model.move.Capture
 import com.kienct.chess.model.move.Move
-import com.kienct.chess.model.move.MoveIntention
 
 /**
  * Calculates all possible moves for a piece along straight lines in specified directions.
@@ -34,6 +33,25 @@ fun Piece.lineMoves(gameSnapshotState: GameSnapshotState, directions: List<Pair<
     return moves
 }
 
+/**
+ * Calculates a single capture move for a piece, given the game state and file/rank deltas.
+ *
+ * This function determines if a piece can perform a capture move based on the provided
+ * file and rank deltas.  It checks if the target square exists, if it contains an opponent's piece
+ * (or is empty), and returns a `BoardMove` representing the capture if valid.
+ *
+ * @param gameSnapshotState The current state of the game.
+ * @param deltaFile The change in file (column) position.  Positive values move right, negative values move left.
+ * @param deltaRank The change in rank (row) position. Positive values move up, negative values move down.
+ * @return A `BoardMove` object representing the capture move if valid, or `null` otherwise.
+ *         The returned `BoardMove` will include a `Capture` object in its `preMove` if an opponent's piece
+ *         is captured, otherwise `preMove` will be `null`.
+ *
+ *         A move is invalid and `null` will be returned if:
+ *           - The piece is not found on the board.
+ *           - The target square is out of bounds.
+ *           - The target square contains a piece of the same color as the moving piece.
+ */
 fun Piece.singleCaptureMove(
     gameSnapshotState: GameSnapshotState,
     deltaFile: Int,
@@ -48,7 +66,8 @@ fun Piece.singleCaptureMove(
         else -> BoardMove(
             move = Move(
                 piece = this,
-                intent = MoveIntention(from = square.position, to = target.position)
+                square.position,
+                target.position
             ),
             preMove = when {
                 target.isNotEmpty -> Capture(target.piece!!, target.position)

@@ -12,8 +12,8 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import com.kienct.chess.model.game.controller.GameController
-import com.kienct.chess.model.game.state.GamePlayState
+import com.kienct.chess.controller.core.GameController
+import com.kienct.chess.controller.state.GamePlayState
 import com.kienct.chess.ui.chess.Board
 import com.kienct.chess.ui.dialogs.PromotionDialog
 

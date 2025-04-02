@@ -31,15 +31,6 @@ data class Move(
     override val to: Position
 ) : PrimaryMove, Consequence {
 
-    constructor(
-        piece: Piece,
-        intent: MoveIntention,
-    ) : this(
-        piece = piece,
-        from = intent.from,
-        to = intent.to
-    )
-
     override fun applyOn(board: Board): Board =
         board.copy(
             pieces = board.pieces

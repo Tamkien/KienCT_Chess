@@ -1,7 +1,8 @@
-package com.kienct.chess.model.game.state
+package com.kienct.chess.controller.state
 
 import android.annotation.SuppressLint
 import android.os.Parcelable
+import kotlinx.parcelize.IgnoredOnParcel
 import kotlinx.parcelize.Parcelize
 import java.text.SimpleDateFormat
 import java.util.Date
@@ -14,24 +15,16 @@ data class GameMetaInfo(
     operator fun get(key: String): String? =
         tags[key]
 
-    val event: String? = get(KEY_EVENT)
-
-    val site: String? = get(KEY_SITE)
-
-    val date: String? = get(KEY_DATE)
-
+    @IgnoredOnParcel
     val white: String? = get(KEY_WHITE)
 
+    @IgnoredOnParcel
     val black: String? = get(KEY_BLACK)
 
-    val result: String? = get(KEY_RESULT)
-
-    val termination: String? = get(KEY_TERMINATION)
-
     companion object {
-        const val KEY_EVENT = "Event"
-        const val KEY_SITE = "Site"
-        const val KEY_DATE = "Date"
+        private const val KEY_EVENT = "Event"
+        private const val KEY_SITE = "Site"
+        private const val KEY_DATE = "Date"
         const val KEY_WHITE = "White"
         const val KEY_BLACK = "Black"
         const val KEY_RESULT = "Result"
