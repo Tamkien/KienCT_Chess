@@ -9,9 +9,6 @@ KienCT's Chess is a modern Android chess game built with Kotlin and Jetpack Comp
 
 -   **Complete Chess Engine:** Implements all standard chess rules and legal move validation.
 -   **Modern UI:** Built with Jetpack Compose for a clean, responsive, and modern user interface.
--   **Pawn Promotion:** Supports pawn promotion to queen, rook, bishop, or knight.
--   **En passant:** Supports en passant move.
--   **Castling:** Supports castling move.
 
 ## Tech Stack
 
@@ -32,8 +29,6 @@ Or download app-release.apk (https://github.com/Tamkien/KienCT_Chess/raw/refs/he
 
 1.  Launch the app on your Android device.
 2.  Start a new game.
-3.  Tap on a piece to select it, then tap on a valid destination square to move it.
-4.  Follow the on-screen instructions for special moves like pawn promotion.
 
 ## Contributing
 
