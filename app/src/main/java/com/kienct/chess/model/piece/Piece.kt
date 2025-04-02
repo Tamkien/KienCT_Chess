@@ -1,7 +1,7 @@
 package com.kienct.chess.model.piece
 
 import android.os.Parcelable
-import com.kienct.chess.model.game.state.GameSnapshotState
+import com.kienct.chess.controller.state.GameSnapshotState
 import com.kienct.chess.model.move.BoardMove
 
 interface Piece : Parcelable {

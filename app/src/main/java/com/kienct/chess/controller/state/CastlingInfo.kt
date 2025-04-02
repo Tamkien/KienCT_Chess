@@ -1,4 +1,4 @@
-package com.kienct.chess.model.game.state
+package com.kienct.chess.controller.state
 
 import android.os.Parcelable
 import com.kienct.chess.model.board.Board
@@ -58,8 +58,8 @@ data class CastlingInfo(
         val color = piece.color
         val holder = holders[color]!!
 
-        val kingSideRookInitialPosition = if (color == WHITE) Position.h1 else Position.h8
-        val queenSideRookInitialPosition = if (color == WHITE) Position.a1 else Position.a8
+        val kingSideRookInitialPosition = if (color == WHITE) h1 else h8
+        val queenSideRookInitialPosition = if (color == WHITE) a1 else a8
 
         val updatedHolder = holder.copy(
             kingHasMoved = holder.kingHasMoved || piece is King,

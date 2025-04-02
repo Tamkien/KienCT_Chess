@@ -1,9 +1,9 @@
-package com.kienct.chess.model.game.state
+package com.kienct.chess.controller.state
 
 import android.os.Parcelable
 import com.kienct.chess.model.board.Board
 import com.kienct.chess.model.board.Position
-import com.kienct.chess.model.game.Resolution
+import com.kienct.chess.controller.Resolution
 import com.kienct.chess.model.move.AppliedMove
 import com.kienct.chess.model.move.BoardMove
 import com.kienct.chess.model.move.Capture

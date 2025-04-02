@@ -2,14 +2,18 @@ package com.kienct.chess.ui.chess
 
 import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.aspectRatio
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.min
 import com.kienct.chess.model.board.Position
-import com.kienct.chess.model.game.controller.GameController
-import com.kienct.chess.model.game.state.GamePlayState
-import com.kienct.chess.model.game.state.GameSnapshotState
-import com.kienct.chess.model.game.state.UiState
+import com.kienct.chess.controller.core.GameController
+import com.kienct.chess.controller.state.GamePlayState
+import com.kienct.chess.controller.state.GameSnapshotState
+import com.kienct.chess.controller.state.UiState
 import com.kienct.chess.ui.chess.board.BoardRenderProperties
 import com.kienct.chess.ui.chess.board.DefaultBoardRenderer
 

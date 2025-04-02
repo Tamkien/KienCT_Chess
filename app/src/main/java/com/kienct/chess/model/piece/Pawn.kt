@@ -3,7 +3,7 @@ package com.kienct.chess.model.piece
 import com.kienct.chess.R
 import com.kienct.chess.model.board.Board
 import com.kienct.chess.model.board.Square
-import com.kienct.chess.model.game.state.GameSnapshotState
+import com.kienct.chess.controller.state.GameSnapshotState
 import com.kienct.chess.model.move.BoardMove
 import com.kienct.chess.model.move.Capture
 import com.kienct.chess.model.move.Move

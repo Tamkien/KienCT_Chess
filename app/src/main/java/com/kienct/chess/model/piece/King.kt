@@ -9,7 +9,7 @@ import com.kienct.chess.model.board.File.e
 import com.kienct.chess.model.board.File.f
 import com.kienct.chess.model.board.File.g
 import com.kienct.chess.model.board.File.h
-import com.kienct.chess.model.game.state.GameSnapshotState
+import com.kienct.chess.controller.state.GameSnapshotState
 import com.kienct.chess.model.move.BoardMove
 import com.kienct.chess.model.move.KingSideCastle
 import com.kienct.chess.model.move.Move
