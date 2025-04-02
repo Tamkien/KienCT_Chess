@@ -3,6 +3,7 @@ package com.kienct.chess.ui.chess
 import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -67,8 +68,7 @@ fun Board(
 ) {
     BoxWithConstraints(
         modifier = Modifier
-            .fillMaxSize()
-            .wrapContentSize(Alignment.Center)
+            .fillMaxWidth()
             .aspectRatio(1f)
     ) {
         val boardProperties =
@@ -76,7 +76,7 @@ fun Board(
                 fromState = fromState,
                 toState = toState,
                 uiState = uiState,
-                squareSize = min(maxWidth, maxHeight) / 8,
+                squareSize = maxWidth / 8,
                 isFlipped = isFlipped,
                 onClick = onClick
             )
